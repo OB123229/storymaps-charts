@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.1.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-019f5609f516ebf5080070b1a20bcc65"},
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "tooltip": [
+      {"field": "name", "title": "Circuit", "type": "nominal"},
+      {"field": "year", "title": "Year", "type": "ordinal"},
+      {
+        "field": "duration_sec",
+        "format": ".3f",
+        "title": "Avg Pit Stop Time (s)",
+        "type": "quantitative"
+      }
+    ],
+    "x": {
+      "axis": {"labelAngle": 0},
+      "field": "year",
+      "title": "Year",
+      "type": "ordinal"
+    },
+    "y": {
+      "field": "duration_sec",
+      "scale": {"domain": [20, 30]},
+      "title": "Average Pit Stop Time (seconds)",
+      "type": "quantitative"
+    }
+  },
+  "height": 350,
+  "params": [
+    {
+      "name": "Circuit",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Silverstone Circuit",
+          "Circuit de Monaco",
+          "Circuit de Spa-Francorchamps",
+          "Autodromo Nazionale di Monza"
+        ],
+        "name": "Select Circuit: "
+      }
+    }
+  ],
+  "title": "Average Pit Stop Time Per Year by Circuit",
+  "transform": [{"filter": "datum.name == Circuit"}],
+  "width": 600,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "datasets": {
+    "data-019f5609f516ebf5080070b1a20bcc65": [
+      {
+        "year": 2011,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 22.99721875
+      },
+      {
+        "year": 2011,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.994324324324324
+      },
+      {
+        "year": 2011,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 21.628854166666667
+      },
+      {"year": 2011, "name": "Silverstone Circuit", "duration_sec": 25.00425},
+      {
+        "year": 2012,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 22.31383333333333
+      },
+      {
+        "year": 2012,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.699173913043477
+      },
+      {
+        "year": 2012,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 21.876189189189187
+      },
+      {
+        "year": 2012,
+        "name": "Silverstone Circuit",
+        "duration_sec": 25.88528947368421
+      },
+      {
+        "year": 2013,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 25.1785
+      },
+      {
+        "year": 2013,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.083703703703705
+      },
+      {
+        "year": 2013,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.017756097560973
+      },
+      {
+        "year": 2013,
+        "name": "Silverstone Circuit",
+        "duration_sec": 25.55665306122449
+      },
+      {
+        "year": 2014,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 25.31065217391304
+      },
+      {
+        "year": 2014,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.67447619047619
+      },
+      {
+        "year": 2014,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.91363043478261
+      },
+      {"year": 2014, "name": "Silverstone Circuit", "duration_sec": 28.82545},
+      {
+        "year": 2015,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.490272727272725
+      },
+      {
+        "year": 2015,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.214407407407407
+      },
+      {
+        "year": 2015,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.262631578947367
+      },
+      {"year": 2015, "name": "Silverstone Circuit", "duration_sec": 28.955375},
+      {
+        "year": 2016,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.728805555555553
+      },
+      {
+        "year": 2016,
+        "name": "Circuit de Monaco",
+        "duration_sec": 26.16042105263158
+      },
+      {
+        "year": 2016,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.34258064516129
+      },
+      {
+        "year": 2016,
+        "name": "Silverstone Circuit",
+        "duration_sec": 29.403958333333335
+      },
+      {
+        "year": 2017,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.724055555555555
+      },
+      {
+        "year": 2017,
+        "name": "Circuit de Monaco",
+        "duration_sec": 24.95073076923077
+      },
+      {
+        "year": 2017,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.942410256410255
+      },
+      {
+        "year": 2017,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.422565217391305
+      },
+      {
+        "year": 2018,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 25.17942105263158
+      },
+      {
+        "year": 2018,
+        "name": "Circuit de Monaco",
+        "duration_sec": 24.83382608695652
+      },
+      {
+        "year": 2018,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 21.69665625
+      },
+      {
+        "year": 2018,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.520185185185184
+      },
+      {
+        "year": 2019,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.590041666666668
+      },
+      {
+        "year": 2019,
+        "name": "Circuit de Monaco",
+        "duration_sec": 24.957409090909092
+      },
+      {
+        "year": 2019,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.53840909090909
+      },
+      {
+        "year": 2019,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.45918181818182
+      },
+      {
+        "year": 2020,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 25.39494117647059
+      },
+      {
+        "year": 2020,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.754263157894737
+      },
+      {
+        "year": 2020,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.637173076923077
+      },
+      {
+        "year": 2021,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.62664705882353
+      },
+      {
+        "year": 2021,
+        "name": "Circuit de Monaco",
+        "duration_sec": 24.196157894736842
+      },
+      {
+        "year": 2021,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.490894736842105
+      },
+      {
+        "year": 2022,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.509555555555558
+      },
+      {
+        "year": 2022,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.740896551724138
+      },
+      {
+        "year": 2022,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.412333333333336
+      },
+      {"year": 2022, "name": "Silverstone Circuit", "duration_sec": 29.0205},
+      {
+        "year": 2023,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.70575
+      },
+      {
+        "year": 2023,
+        "name": "Circuit de Monaco",
+        "duration_sec": 25.666206896551724
+      },
+      {
+        "year": 2023,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.651243243243243
+      },
+      {
+        "year": 2023,
+        "name": "Silverstone Circuit",
+        "duration_sec": 28.766142857142853
+      },
+      {
+        "year": 2024,
+        "name": "Autodromo Nazionale di Monza",
+        "duration_sec": 24.848846153846157
+      },
+      {
+        "year": 2024,
+        "name": "Circuit de Monaco",
+        "duration_sec": 24.768285714285714
+      },
+      {
+        "year": 2024,
+        "name": "Circuit de Spa-Francorchamps",
+        "duration_sec": 23.078794117647057
+      },
+      {
+        "year": 2024,
+        "name": "Silverstone Circuit",
+        "duration_sec": 29.164058823529412
+      }
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
