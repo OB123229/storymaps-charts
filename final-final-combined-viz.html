@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.1.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {
+    "view": {"continuousWidth": 300, "continuousHeight": 300, "strokeWidth": 0},
+    "axis": {
+      "grid": true,
+      "gridOpacity": 0.2,
+      "labelFontSize": 10,
+      "titleFontSize": 13
+    },
+    "title": {"anchor": "start", "fontSize": 14}
+  },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "mark": {"type": "circle", "opacity": 0.8, "size": 150},
+          "encoding": {
+            "color": {
+              "field": "dnf_rate",
+              "legend": {"orient": "right"},
+              "scale": {
+                "domain": [100, 0],
+                "reverse": true,
+                "scheme": "redyellowgreen"
+              },
+              "title": "DNF Rate (%)",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {"field": "year", "title": "Year", "type": "ordinal"},
+              {"field": "num_races", "title": "Races", "type": "quantitative"},
+              {
+                "field": "num_winners",
+                "title": "Different Winners",
+                "type": "quantitative"
+              },
+              {
+                "field": "dnf_rate",
+                "format": ".1f",
+                "title": "DNF Rate (%)",
+                "type": "quantitative"
+              }
+            ],
+            "x": {
+              "field": "num_races",
+              "scale": {"zero": false},
+              "title": "Number of Races in Season",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "num_winners",
+              "scale": {"zero": false},
+              "title": "Number of Different Winners",
+              "type": "quantitative"
+            }
+          },
+          "height": 400,
+          "name": "view_b024fe68c4e23321_0",
+          "title": "Races vs. Winners per Season",
+          "width": 500
+        },
+        {
+          "layer": [
+            {
+              "mark": {"type": "bar", "color": "lightgray", "opacity": 0.4},
+              "encoding": {
+                "x": {
+                  "axis": {
+                    "labelAngle": -45,
+                    "labelFontSize": 9,
+                    "values": [
+                      1950,
+                      1955,
+                      1960,
+                      1965,
+                      1970,
+                      1975,
+                      1980,
+                      1985,
+                      1990,
+                      1995,
+                      2000,
+                      2005,
+                      2010,
+                      2015,
+                      2020
+                    ]
+                  },
+                  "field": "year",
+                  "title": "Year",
+                  "type": "ordinal"
+                },
+                "y": {
+                  "field": "avg_laps",
+                  "scale": {"zero": false},
+                  "title": "Average Race Laps",
+                  "type": "quantitative"
+                }
+              }
+            },
+            {
+              "mark": {"type": "bar", "color": "#ff7f0e", "opacity": 0.9},
+              "encoding": {
+                "tooltip": [
+                  {"field": "year", "type": "ordinal"},
+                  {
+                    "field": "avg_laps",
+                    "format": ".1f",
+                    "title": "Avg Laps per Race",
+                    "type": "quantitative"
+                  }
+                ],
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {
+                  "field": "avg_laps",
+                  "scale": {"zero": false},
+                  "type": "quantitative"
+                }
+              },
+              "transform": [{"filter": {"param": "param_54dd647193d9b3b3"}}]
+            }
+          ],
+          "height": 400,
+          "title": "Average Race Laps Over Time",
+          "width": 600
+        }
+      ],
+      "resolve": {"scale": {"color": "independent"}}
+    },
+    {
+      "layer": [
+        {
+          "mark": {"type": "bar", "color": "lightgray", "opacity": 0.4},
+          "encoding": {
+            "x": {
+              "axis": {
+                "labelAngle": -45,
+                "values": [
+                  1950,
+                  1955,
+                  1960,
+                  1965,
+                  1970,
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              },
+              "field": "year",
+              "title": "Year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "dnf_rate",
+              "scale": {"zero": true},
+              "title": "DNF Rate (%)",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {"type": "bar", "color": "#d62728", "opacity": 0.9},
+          "encoding": {
+            "tooltip": [
+              {"field": "year", "type": "ordinal"},
+              {
+                "field": "dnf_rate",
+                "format": ".1f",
+                "title": "DNF Rate (%)",
+                "type": "quantitative"
+              }
+            ],
+            "x": {"field": "year", "type": "ordinal"},
+            "y": {
+              "field": "dnf_rate",
+              "scale": {"zero": true},
+              "type": "quantitative"
+            }
+          },
+          "transform": [{"filter": {"param": "param_54dd647193d9b3b3"}}]
+        }
+      ],
+      "height": 250,
+      "title": "DNF Rate Over Time",
+      "width": 1150
+    }
+  ],
+  "data": {"name": "data-141caa0435e192cc112b3e83e3830880"},
+  "params": [
+    {
+      "name": "param_54dd647193d9b3b3",
+      "select": {"type": "interval"},
+      "views": ["view_b024fe68c4e23321_0"]
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}},
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+  "datasets": {
+    "data-141caa0435e192cc112b3e83e3830880": [
+      {
+        "year": 1950,
+        "num_races": 7,
+        "num_winners": 3,
+        "dnf_rate": 89.375,
+        "avg_laps": 75.57142857142857
+      },
+      {
+        "year": 1951,
+        "num_races": 8,
+        "num_winners": 6,
+        "dnf_rate": 83.79888268156425,
+        "avg_laps": 76.875
+      },
+      {
+        "year": 1952,
+        "num_races": 8,
+        "num_winners": 3,
+        "dnf_rate": 85.5813953488372,
+        "avg_laps": 81
+      },
+      {
+        "year": 1953,
+        "num_races": 9,
+        "num_winners": 5,
+        "dnf_rate": 86.58536585365853,
+        "avg_laps": 81.77777777777777
+      },
+      {
+        "year": 1954,
+        "num_races": 9,
+        "num_winners": 4,
+        "dnf_rate": 83.91304347826087,
+        "avg_laps": 80.22222222222223
+      },
+      {
+        "year": 1955,
+        "num_races": 7,
+        "num_winners": 4,
+        "dnf_rate": 82.22222222222221,
+        "avg_laps": 96
+      },
+      {
+        "year": 1956,
+        "num_races": 8,
+        "num_winners": 5,
+        "dnf_rate": 84.21052631578947,
+        "avg_laps": 83.5
+      },
+      {
+        "year": 1957,
+        "num_races": 8,
+        "num_winners": 4,
+        "dnf_rate": 79.53216374269006,
+        "avg_laps": 87.375
+      },
+      {
+        "year": 1958,
+        "num_races": 11,
+        "num_winners": 6,
+        "dnf_rate": 76.34854771784232,
+        "avg_laps": 72
+      },
+      {
+        "year": 1959,
+        "num_races": 9,
+        "num_winners": 6,
+        "dnf_rate": 78.46153846153847,
+        "avg_laps": 81.77777777777777
+      },
+      {
+        "year": 1960,
+        "num_races": 10,
+        "num_winners": 5,
+        "dnf_rate": 81.16591928251121,
+        "avg_laps": 80.1
+      },
+      {
+        "year": 1961,
+        "num_races": 8,
+        "num_winners": 5,
+        "dnf_rate": 76.81818181818181,
+        "avg_laps": 61.25
+      },
+      {
+        "year": 1962,
+        "num_races": 9,
+        "num_winners": 4,
+        "dnf_rate": 82.51121076233184,
+        "avg_laps": 69.33333333333333
+      },
+      {
+        "year": 1963,
+        "num_races": 10,
+        "num_winners": 3,
+        "dnf_rate": 88.9763779527559,
+        "avg_laps": 70.8
+      },
+      {
+        "year": 1964,
+        "num_races": 10,
+        "num_winners": 5,
+        "dnf_rate": 85.99033816425121,
+        "avg_laps": 72.2
+      },
+      {
+        "year": 1965,
+        "num_races": 10,
+        "num_winners": 4,
+        "dnf_rate": 80.48780487804879,
+        "avg_laps": 68.3
+      },
+      {
+        "year": 1966,
+        "num_races": 9,
+        "num_winners": 5,
+        "dnf_rate": 87.34939759036145,
+        "avg_laps": 66.88888888888889
+      },
+      {
+        "year": 1967,
+        "num_races": 11,
+        "num_winners": 6,
+        "dnf_rate": 83.41463414634146,
+        "avg_laps": 73.0909090909091
+      },
+      {
+        "year": 1968,
+        "num_races": 12,
+        "num_winners": 7,
+        "dnf_rate": 84.54935622317596,
+        "avg_laps": 71.08333333333333
+      },
+      {
+        "year": 1969,
+        "num_races": 11,
+        "num_winners": 5,
+        "dnf_rate": 78.53107344632768,
+        "avg_laps": 73.36363636363636
+      },
+      {
+        "year": 1970,
+        "num_races": 13,
+        "num_winners": 7,
+        "dnf_rate": 81.63265306122449,
+        "avg_laps": 70.53846153846153
+      },
+      {
+        "year": 1971,
+        "num_races": 11,
+        "num_winners": 6,
+        "dnf_rate": 77.9467680608365,
+        "avg_laps": 61
+      },
+      {
+        "year": 1972,
+        "num_races": 12,
+        "num_winners": 5,
+        "dnf_rate": 78.96440129449837,
+        "avg_laps": 67.08333333333333
+      },
+      {
+        "year": 1973,
+        "num_races": 15,
+        "num_winners": 5,
+        "dnf_rate": 77.31092436974791,
+        "avg_laps": 64.86666666666666
+      },
+      {
+        "year": 1974,
+        "num_races": 15,
+        "num_winners": 7,
+        "dnf_rate": 80.5045871559633,
+        "avg_laps": 65.26666666666667
+      },
+      {
+        "year": 1975,
+        "num_races": 14,
+        "num_winners": 9,
+        "dnf_rate": 76.30853994490359,
+        "avg_laps": 54.57142857142857
+      },
+      {
+        "year": 1976,
+        "num_races": 16,
+        "num_winners": 7,
+        "dnf_rate": 77.41935483870968,
+        "avg_laps": 64.375
+      },
+      {
+        "year": 1977,
+        "num_races": 17,
+        "num_winners": 8,
+        "dnf_rate": 80.71278825995807,
+        "avg_laps": 66.58823529411765
+      },
+      {
+        "year": 1978,
+        "num_races": 16,
+        "num_winners": 6,
+        "dnf_rate": 78.55626326963908,
+        "avg_laps": 64.75
+      },
+      {
+        "year": 1979,
+        "num_races": 15,
+        "num_winners": 7,
+        "dnf_rate": 82.13399503722084,
+        "avg_laps": 65
+      },
+      {
+        "year": 1980,
+        "num_races": 14,
+        "num_winners": 7,
+        "dnf_rate": 83.28981723237598,
+        "avg_laps": 63.5
+      },
+      {
+        "year": 1981,
+        "num_races": 15,
+        "num_winners": 7,
+        "dnf_rate": 81.9599109131403,
+        "avg_laps": 64.86666666666666
+      },
+      {
+        "year": 1982,
+        "num_races": 16,
+        "num_winners": 11,
+        "dnf_rate": 87.09677419354838,
+        "avg_laps": 66.25
+      },
+      {
+        "year": 1983,
+        "num_races": 15,
+        "num_winners": 8,
+        "dnf_rate": 83.25471698113208,
+        "avg_laps": 62.666666666666664
+      },
+      {
+        "year": 1984,
+        "num_races": 16,
+        "num_winners": 5,
+        "dnf_rate": 86.9767441860465,
+        "avg_laps": 62.5625
+      },
+      {
+        "year": 1985,
+        "num_races": 16,
+        "num_winners": 8,
+        "dnf_rate": 85.4679802955665,
+        "avg_laps": 64.5
+      },
+      {
+        "year": 1986,
+        "num_races": 16,
+        "num_winners": 5,
+        "dnf_rate": 87.37864077669903,
+        "avg_laps": 65.25
+      },
+      {
+        "year": 1987,
+        "num_races": 16,
+        "num_winners": 5,
+        "dnf_rate": 86.87350835322196,
+        "avg_laps": 63.0625
+      },
+      {
+        "year": 1988,
+        "num_races": 16,
+        "num_winners": 3,
+        "dnf_rate": 85.25252525252526,
+        "avg_laps": 64.4375
+      },
+      {
+        "year": 1989,
+        "num_races": 16,
+        "num_winners": 6,
+        "dnf_rate": 89.51612903225806,
+        "avg_laps": 64.9375
+      },
+      {
+        "year": 1990,
+        "num_races": 16,
+        "num_winners": 6,
+        "dnf_rate": 83.76383763837639,
+        "avg_laps": 65.75
+      },
+      {
+        "year": 1991,
+        "num_races": 16,
+        "num_winners": 5,
+        "dnf_rate": 84.2300556586271,
+        "avg_laps": 61.25
+      },
+      {
+        "year": 1992,
+        "num_races": 16,
+        "num_winners": 5,
+        "dnf_rate": 85.77405857740585,
+        "avg_laps": 64.75
+      },
+      {
+        "year": 1993,
+        "num_races": 16,
+        "num_winners": 4,
+        "dnf_rate": 85.92233009708737,
+        "avg_laps": 65.3125
+      },
+      {
+        "year": 1994,
+        "num_races": 16,
+        "num_winners": 4,
+        "dnf_rate": 85.8108108108108,
+        "avg_laps": 65.375
+      },
+      {
+        "year": 1995,
+        "num_races": 17,
+        "num_winners": 5,
+        "dnf_rate": 83.97129186602871,
+        "avg_laps": 66.11764705882354
+      },
+      {
+        "year": 1996,
+        "num_races": 16,
+        "num_winners": 4,
+        "dnf_rate": 74.11764705882354,
+        "avg_laps": 63.375
+      },
+      {
+        "year": 1997,
+        "num_races": 17,
+        "num_winners": 6,
+        "dnf_rate": 65.42553191489363,
+        "avg_laps": 62
+      },
+      {
+        "year": 1998,
+        "num_races": 16,
+        "num_winners": 4,
+        "dnf_rate": 75.07163323782235,
+        "avg_laps": 63.4375
+      },
+      {
+        "year": 1999,
+        "num_races": 16,
+        "num_winners": 6,
+        "dnf_rate": 67.32954545454545,
+        "avg_laps": 62.5
+      },
+      {
+        "year": 2000,
+        "num_races": 17,
+        "num_winners": 4,
+        "dnf_rate": 71.58176943699732,
+        "avg_laps": 63.1764705882353
+      },
+      {
+        "year": 2001,
+        "num_races": 17,
+        "num_winners": 5,
+        "dnf_rate": 73.52941176470588,
+        "avg_laps": 62.64705882352941
+      },
+      {
+        "year": 2002,
+        "num_races": 17,
+        "num_winners": 4,
+        "dnf_rate": 74.03314917127072,
+        "avg_laps": 64.11764705882354
+      },
+      {
+        "year": 2003,
+        "num_races": 16,
+        "num_winners": 8,
+        "dnf_rate": 66.875,
+        "avg_laps": 63.625
+      },
+      {
+        "year": 2004,
+        "num_races": 18,
+        "num_winners": 5,
+        "dnf_rate": 61.66666666666667,
+        "avg_laps": 62.333333333333336
+      },
+      {
+        "year": 2005,
+        "num_races": 19,
+        "num_winners": 5,
+        "dnf_rate": 60.63829787234043,
+        "avg_laps": 62.10526315789474
+      },
+      {
+        "year": 2006,
+        "num_races": 18,
+        "num_winners": 5,
+        "dnf_rate": 63.38383838383839,
+        "avg_laps": 63.166666666666664
+      },
+      {
+        "year": 2007,
+        "num_races": 17,
+        "num_winners": 4,
+        "dnf_rate": 60.6951871657754,
+        "avg_laps": 62.64705882352941
+      },
+      {
+        "year": 2008,
+        "num_races": 18,
+        "num_winners": 7,
+        "dnf_rate": 47.28260869565217,
+        "avg_laps": 62.05555555555556
+      },
+      {
+        "year": 2009,
+        "num_races": 17,
+        "num_winners": 6,
+        "dnf_rate": 37.05882352941177,
+        "avg_laps": 58.11764705882353
+      },
+      {
+        "year": 2010,
+        "num_races": 19,
+        "num_winners": 5,
+        "dnf_rate": 53.50877192982456,
+        "avg_laps": 59.421052631578945
+      },
+      {
+        "year": 2011,
+        "num_races": 19,
+        "num_winners": 5,
+        "dnf_rate": 62.06140350877193,
+        "avg_laps": 59.63157894736842
+      },
+      {
+        "year": 2012,
+        "num_races": 20,
+        "num_winners": 8,
+        "dnf_rate": 43.125,
+        "avg_laps": 59.6
+      },
+      {
+        "year": 2013,
+        "num_races": 19,
+        "num_winners": 5,
+        "dnf_rate": 41.62679425837321,
+        "avg_laps": 59.526315789473685
+      },
+      {
+        "year": 2014,
+        "num_races": 19,
+        "num_winners": 3,
+        "dnf_rate": 50.859950859950864,
+        "avg_laps": 59.68421052631579
+      },
+      {
+        "year": 2015,
+        "num_races": 19,
+        "num_winners": 3,
+        "dnf_rate": 54.761904761904766,
+        "avg_laps": 60.473684210526315
+      },
+      {
+        "year": 2016,
+        "num_races": 21,
+        "num_winners": 4,
+        "dnf_rate": 56.27705627705628,
+        "avg_laps": 60.38095238095238
+      },
+      {
+        "year": 2017,
+        "num_races": 20,
+        "num_winners": 5,
+        "dnf_rate": 58.75,
+        "avg_laps": 59.8
+      },
+      {
+        "year": 2018,
+        "num_races": 21,
+        "num_winners": 5,
+        "dnf_rate": 54.52380952380952,
+        "avg_laps": 60.19047619047619
+      },
+      {
+        "year": 2019,
+        "num_races": 21,
+        "num_winners": 5,
+        "dnf_rate": 53.333333333333336,
+        "avg_laps": 60.095238095238095
+      },
+      {
+        "year": 2020,
+        "num_races": 17,
+        "num_winners": 5,
+        "dnf_rate": 43.8235294117647,
+        "avg_laps": 61
+      },
+      {
+        "year": 2021,
+        "num_races": 22,
+        "num_winners": 6,
+        "dnf_rate": 50.68181818181819,
+        "avg_laps": 58.95454545454545
+      },
+      {
+        "year": 2022,
+        "num_races": 22,
+        "num_winners": 5,
+        "dnf_rate": 36.59090909090909,
+        "avg_laps": 58.81818181818182
+      },
+      {
+        "year": 2023,
+        "num_races": 22,
+        "num_winners": 3,
+        "dnf_rate": 30.909090909090907,
+        "avg_laps": 60.22727272727273
+      },
+      {
+        "year": 2024,
+        "num_races": 24,
+        "num_winners": 7,
+        "dnf_rate": 40.08350730688935,
+        "avg_laps": 60.166666666666664
+      }
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
